@@ -100,6 +100,7 @@ async function nactiList(
 	const existujici = doc.sheetsByTitle[nazev];
 
 	if (existujici) {
+		await existujici.loadHeaderRow().catch(() => existujici.setHeaderRow(hlavicka));
 		if (!existujici.headerValues?.length) {
 			await existujici.setHeaderRow(hlavicka);
 		}
