@@ -1,0 +1,400 @@
+:root {
+	--pozadi: #f4f5f7;
+	--karta: #ffffff;
+	--text: #16181d;
+	--text-slaby: #6b7280;
+	--ramecek: #e3e5e9;
+	--ramecek-silny: #cfd3da;
+	--akcent: #0091ea;
+	--akcent-svetly: #e6f4fd;
+	--zelena: #17902f;
+	--cervena: #d92b2b;
+	--oranzova: #c2660a;
+	--radius: 10px;
+}
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html,
+body {
+	background: var(--pozadi);
+	color: var(--text);
+	font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+	font-size: 15px;
+	line-height: 1.45;
+	-webkit-text-size-adjust: 100%;
+}
+
+button,
+input,
+select,
+textarea {
+	font: inherit;
+	color: inherit;
+}
+
+a {
+	color: var(--akcent);
+}
+
+/* --- kostra stránky --- */
+
+.hlavicka {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+	flex-wrap: wrap;
+	background: var(--karta);
+	border-bottom: 1px solid var(--ramecek);
+	padding: 10px 16px;
+	position: sticky;
+	top: 0;
+	z-index: 10;
+}
+
+.hlavicka__nazev {
+	display: flex;
+	flex-direction: column;
+	line-height: 1.2;
+}
+
+.hlavicka__nazev strong {
+	font-size: 1.05rem;
+}
+
+.hlavicka__nazev span {
+	color: var(--text-slaby);
+	font-size: 0.82rem;
+}
+
+.hlavicka__vpravo {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.hlavicka__uzivatel {
+	color: var(--text-slaby);
+	font-size: 0.88rem;
+}
+
+.obsah {
+	max-width: 980px;
+	margin: 0 auto;
+	padding: 14px;
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+
+/* --- karty --- */
+
+.karta {
+	background: var(--karta);
+	border: 1px solid var(--ramecek);
+	border-radius: var(--radius);
+	padding: 14px;
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+
+.karta__zahlavi {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 10px;
+	flex-wrap: wrap;
+}
+
+.karta__zahlavi h2 {
+	font-size: 1rem;
+	font-weight: 600;
+}
+
+/* --- formulářové prvky --- */
+
+.pole {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	min-width: 0;
+}
+
+.pole > label,
+.pole > span {
+	color: var(--text-slaby);
+	font-size: 0.8rem;
+}
+
+.vstup {
+	background: #fff;
+	border: 1px solid var(--ramecek-silny);
+	border-radius: 8px;
+	padding: 7px 9px;
+	width: 100%;
+	min-width: 0;
+}
+
+.vstup:focus-visible {
+	outline: 2px solid var(--akcent);
+	outline-offset: -1px;
+}
+
+.vstup:disabled {
+	background: var(--pozadi);
+	color: var(--text-slaby);
+}
+
+.hodnota {
+	background: var(--pozadi);
+	border: 1px solid var(--ramecek);
+	border-radius: 8px;
+	padding: 7px 9px;
+	text-align: center;
+	font-variant-numeric: tabular-nums;
+	font-weight: 600;
+	white-space: nowrap;
+}
+
+.tlacitko {
+	background: var(--akcent);
+	border: 1px solid transparent;
+	border-radius: 8px;
+	color: #fff;
+	cursor: pointer;
+	font-size: 0.9rem;
+	padding: 7px 12px;
+	white-space: nowrap;
+}
+
+.tlacitko:hover {
+	filter: brightness(0.94);
+}
+
+.tlacitko--tiche {
+	background: transparent;
+	border-color: var(--ramecek-silny);
+	color: var(--text);
+}
+
+.tlacitko--zrusit {
+	background: transparent;
+	border-color: var(--ramecek-silny);
+	color: var(--cervena);
+	padding: 7px 10px;
+}
+
+.tlacitko:disabled {
+	cursor: not-allowed;
+	opacity: 0.55;
+}
+
+/* --- lišta týdne --- */
+
+.tyden {
+	display: flex;
+	gap: 6px;
+	overflow-x: auto;
+	padding-bottom: 2px;
+}
+
+.tyden__den {
+	background: var(--karta);
+	border: 1px solid var(--ramecek);
+	border-radius: 8px;
+	cursor: pointer;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	flex: 1 0 auto;
+	gap: 1px;
+	min-width: 74px;
+	padding: 7px 10px;
+}
+
+.tyden__den small {
+	color: var(--text-slaby);
+	font-size: 0.72rem;
+}
+
+.tyden__den--dnes {
+	background: var(--akcent-svetly);
+}
+
+.tyden__den--vybrany {
+	border-color: var(--akcent);
+	box-shadow: inset 0 0 0 1px var(--akcent);
+}
+
+/* --- mřížky --- */
+
+.mrizka-dochazka {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(112px, 1fr));
+	gap: 10px;
+}
+
+.radek-ukolu {
+	display: grid;
+	grid-template-columns: 1fr 104px auto;
+	gap: 8px;
+	align-items: center;
+}
+
+@media (max-width: 560px) {
+	.radek-ukolu {
+		grid-template-columns: 1fr 92px auto;
+	}
+}
+
+.seznam-ukolu {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.prazdno {
+	color: var(--text-slaby);
+	font-size: 0.9rem;
+}
+
+/* --- stav ukládání --- */
+
+.stav {
+	align-items: center;
+	color: var(--text-slaby);
+	display: flex;
+	font-size: 0.85rem;
+	gap: 6px;
+	min-height: 20px;
+}
+
+.stav__tecka {
+	border-radius: 50%;
+	height: 8px;
+	width: 8px;
+}
+
+.stav--ok .stav__tecka {
+	background: var(--zelena);
+}
+
+.stav--nacitam .stav__tecka {
+	background: var(--oranzova);
+}
+
+.stav--chyba {
+	color: var(--cervena);
+}
+
+.stav--chyba .stav__tecka {
+	background: var(--cervena);
+}
+
+/* --- přihlášení --- */
+
+.prihlaseni {
+	align-items: center;
+	display: flex;
+	justify-content: center;
+	min-height: 100svh;
+	padding: 20px;
+}
+
+.prihlaseni__karta {
+	background: var(--karta);
+	border: 1px solid var(--ramecek);
+	border-radius: var(--radius);
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+	max-width: 380px;
+	padding: 26px;
+	text-align: center;
+	width: 100%;
+}
+
+.chyba {
+	background: #fdeaea;
+	border: 1px solid #f3c2c2;
+	border-radius: 8px;
+	color: var(--cervena);
+	font-size: 0.88rem;
+	padding: 9px 11px;
+	text-align: left;
+}
+
+/* --- export --- */
+
+.export-den {
+	border: 1px solid var(--ramecek);
+	border-radius: 8px;
+	break-inside: avoid;
+	padding: 10px;
+}
+
+.export-den__zahlavi {
+	display: flex;
+	justify-content: space-between;
+	gap: 10px;
+	flex-wrap: wrap;
+	font-weight: 600;
+	margin-bottom: 6px;
+}
+
+.export-tabulka {
+	border-collapse: collapse;
+	font-size: 0.88rem;
+	width: 100%;
+}
+
+.export-tabulka th,
+.export-tabulka td {
+	border-bottom: 1px solid var(--ramecek);
+	padding: 4px 6px;
+	text-align: left;
+}
+
+.export-tabulka th {
+	color: var(--text-slaby);
+	font-weight: 500;
+	white-space: nowrap;
+	width: 1%;
+}
+
+.souhrn {
+	display: flex;
+	justify-content: space-between;
+	gap: 10px;
+	font-weight: 600;
+}
+
+@media print {
+	:root {
+		--pozadi: #fff;
+	}
+
+	.ne-tisknout {
+		display: none !important;
+	}
+
+	.obsah {
+		max-width: none;
+		padding: 0;
+	}
+
+	.karta {
+		border: none;
+		padding: 0;
+	}
+
+	.export-den {
+		page-break-inside: avoid;
+	}
+}
