@@ -122,15 +122,17 @@ function ted(): string {
 	return new Date().toISOString();
 }
 
+const naCas = (h: unknown): string => { const s = String(h ?? "").trim(); if (s.indexOf(":") < 0) return ""; const d = s.split(":"); return d[0].padStart(2, "0") + ":" + d[1].padStart(2, "0"); };
+
 // --- Docházka -------------------------------------------------------------
 
 function naZaznam(radek: GoogleSpreadsheetRow): ZaznamDochazky {
 	return {
 		datum: String(radek.get("datum") ?? ""),
-		prichod: String(radek.get("prichod") ?? ""),
-		odchod: String(radek.get("odchod") ?? ""),
-		pauza: String(radek.get("pauza") ?? ""),
-		prescas: String(radek.get("prescas") ?? ""),
+		prichod: naCas(radek.get("prichod")),
+		odchod: naCas(radek.get("odchod")),
+		pauza: naCas(radek.get("pauza")),
+		prescas: naCas(radek.get("prescas")),
 	};
 }
 
