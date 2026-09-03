@@ -203,9 +203,9 @@ export async function ulozDochazku(
 
 	if (radek) {
 		radek.assign(hodnoty);
-		await radek.save();
+		await radek.save({ raw: true });
 	} else {
-		await list.addRow(hodnoty);
+		await list.addRow(hodnoty, { raw: true });
 	}
 
 	return zaznam;
@@ -292,7 +292,7 @@ export async function ulozUkoly(
 		}
 
 		radek.assign({ ...novy, jmeno, aktualizovano: cas });
-		await radek.save();
+		await radek.save({ raw: true });
 	}
 
 	// 2. smazat přebytečné (odspodu nahoru)
@@ -310,7 +310,7 @@ export async function ulozUkoly(
 			cas: u.cas,
 			aktualizovano: cas,
 		}));
-		await list.addRows(nove);
+		await list.addRows(nove, { raw: true });
 	}
 
 	return ciste;
